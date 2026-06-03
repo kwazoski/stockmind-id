@@ -12,7 +12,6 @@ from scipy import stats
 # ── Page Config ──────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="Prediksi Saham Indonesia",
-    page_icon="📈",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -243,13 +242,13 @@ with st.sidebar:
 
     has_model = model_ok(ticker)
     if has_model:
-        st.success("✅ Model tersedia")
+        st.success(" Model tersedia")
     else:
-        st.warning("⚠️ Model belum diupload")
+        st.warning(" Model belum diupload")
         st.caption("Upload folder `model/` ke repo GitHub lalu redeploy.")
 
 # ── HEADER ───────────────────────────────────────────────────────────────────
-st.markdown(f'<div class="page-title">📈 Prediksi Saham Indonesia</div>', unsafe_allow_html=True)
+st.markdown(f'<div class="page-title"> Prediksi Saham Indonesia</div>', unsafe_allow_html=True)
 st.markdown(f'<div class="page-sub">{TICKERS[ticker]} · {ticker}</div>', unsafe_allow_html=True)
 
 # ── Fetch data ───────────────────────────────────────────────────────────────
