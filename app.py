@@ -560,7 +560,7 @@ elif page == "Visualization":
 # PAGE 5 — ABOUT
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == "About":
-    st.markdown('<div class="page-title">ℹ About</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-title"> About</div>', unsafe_allow_html=True)
     st.markdown('<div class="page-sub">Informasi proyek, metode, dan dataset</div>', unsafe_allow_html=True)
 
     st.markdown('<div class="section-label">Penjelasan Metode</div>', unsafe_allow_html=True)
