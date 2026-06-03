@@ -114,7 +114,7 @@ MODEL_DIR = "model"
 
 TEAM_MEMBERS = [
     {"name": "Yuwanda Aji Pangestu", "role": "ML Engineer"},
-    {"name": "Rafinara ARdhani Abhinaya", "role": "Data Engineer"},
+    {"name": "Rafinara Ardhani Abhinaya", "role": "Data Engineer"},
 ]
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
