@@ -105,9 +105,8 @@ ANOMALY_FEATURES = ['Close','Volume','Daily_Return','Volatility','High_Low_Gap']
 MODEL_DIR = "model"
 
 TEAM_MEMBERS = [
-    {"name": "Anggota 1", "role": "Data Engineer"},
-    {"name": "Anggota 2", "role": "ML Engineer"},
-    {"name": "Anggota 3", "role": "Data Analyst"},
+    {"name": "Yuwanda Aji Pangestu", "role": "ML Engineer"},
+    {"name": "Rafinara Ardhani Abhinaya", "role": "Data Engineer"},
 ]
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
