@@ -12,77 +12,132 @@ from scipy import stats
 # ── Page Config ──────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="Prediksi Saham Indonesia",
-    page_icon="",
+    page_icon="📈",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-# ── CSS: clean, plain, no gimmicks ──────────────────────────────────────────
+# ── CSS: clean, plain, force light theme throughout ──────────────────────────
 st.markdown("""
 <style>
-  html, body, [class*="css"] {
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 14px;
+  /* ── Force light theme globally ── */
+  html, body, [class*="css"], [data-testid="stAppViewContainer"],
+  [data-testid="stMain"], .main, .block-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, sans-serif !important;
+    font-size: 14px !important;
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
   }
-  .stApp { background: #ffffff; color: #1a1a1a;5 }
-  [data-testid="stSidebar"] {
-    background: #f7f7f7;
-    border-right: 1px solid #e0e0e0;
+
+  /* ── Sidebar ── */
+  [data-testid="stSidebar"], [data-testid="stSidebar"] > div {
+    background-color: #f5f5f5 !important;
+    border-right: 1px solid #e0e0e0 !important;
   }
-  .page-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #111;
-    margin-bottom: 2px;
+  [data-testid="stSidebar"] * {
+    color: #1a1a1a !important;
   }
-  .page-sub {
-    font-size: 0.8rem;
-    color: #888;
-    margin-bottom: 1.5rem;
+  [data-testid="stSidebar"] .stSelectbox label,
+  [data-testid="stSidebar"] .stSlider label,
+  [data-testid="stSidebar"] p,
+  [data-testid="stSidebar"] span,
+  [data-testid="stSidebar"] small {
+    color: #333333 !important;
   }
+
+  /* ── Selectbox & inputs ── */
+  .stSelectbox > div > div,
+  [data-testid="stSelectbox"] > div {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+    border: 1px solid #cccccc !important;
+  }
+  .stSelectbox svg { fill: #333 !important; }
+
+  /* ── Slider ── */
+  .stSlider p, .stSlider span, .stSlider label { color: #333 !important; }
+  [data-testid="stSlider"] * { color: #333 !important; }
+
+  /* ── Date inputs ── */
+  .stDateInput input {
+    background: #fff !important;
+    color: #1a1a1a !important;
+    border: 1px solid #ccc !important;
+  }
+
+  /* ── Tabs ── */
+  [data-testid="stTabs"] button {
+    color: #555 !important;
+    background: transparent !important;
+  }
+  [data-testid="stTabs"] button[aria-selected="true"] {
+    color: #1a1a1a !important;
+    border-bottom: 2px solid #1a1a1a !important;
+  }
+
+  /* ── Divider ── */
+  hr { border-color: #e0e0e0 !important; }
+
+  /* ── Caption / small text ── */
+  .stCaption, caption, small, [data-testid="stCaptionContainer"] {
+    color: #777777 !important;
+  }
+
+  /* ── Success / warning alerts ── */
+  [data-testid="stAlert"] { border-radius: 6px !important; }
+
+  /* ── KPI cards ── */
   .kpi-box {
-    border: 1px solid #e8e8e8;
+    border: 1px solid #e0e0e0;
     border-radius: 6px;
     padding: 14px 18px;
     background: #fafafa;
+    margin-bottom: 4px;
   }
-  .kpi-label { font-size: 0.7rem; color: #999; text-transform: uppercase; letter-spacing: 0.05em; }
-  .kpi-value { font-size: 1.35rem; font-weight: 700; color: #111; margin-top: 2px; }
-  .kpi-value.up   { color: #1a7a3c; }
-  .kpi-value.down { color: #c0392b; }
-  .kpi-value.muted{ color: #555; font-size: 1rem; }
-  .section-label {
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: #aaa;
+  .kpi-label {
+    font-size: 0.68rem;
+    color: #888;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 6px;
-    margin: 20px 0 12px 0;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
   }
+  .kpi-value { font-size: 1.3rem; font-weight: 700; color: #111; }
+  .kpi-value.up    { color: #1a7a3c; }
+  .kpi-value.down  { color: #c0392b; }
+  .kpi-value.muted { color: #444; font-size: 1rem; font-weight: 600; }
+
+  /* ── Section labels ── */
+  .section-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid #ebebeb;
+    padding-bottom: 6px;
+    margin: 22px 0 12px 0;
+  }
+
+  /* ── Info / warn notes ── */
   .info-note {
-    background: #f0f4ff;
+    background: #f0f5ff;
     border-left: 3px solid #4a7cfc;
     padding: 10px 14px;
     font-size: 0.82rem;
-    color: #444;
+    color: #333;
     border-radius: 0 4px 4px 0;
     margin-bottom: 14px;
   }
-  .warn-note {
-    background: #fff8f0;
-    border-left: 3px solid #e67e22;
-    padding: 10px 14px;
-    font-size: 0.82rem;
-    color: #444;
-    border-radius: 0 4px 4px 0;
-    margin-bottom: 14px;
-  }
-  div[data-testid="stMetric"] { background: #fafafa; border: 1px solid #eee; border-radius: 6px; padding: 10px; }
-  .stSelectbox label, .stSlider label, .stDateInput label { font-size: 0.75rem; color: #666; }
-  h2, h3 { font-size: 1rem; font-weight: 600; color: #222; }
-  footer { display: none; }
+
+  /* ── Page title ── */
+  .page-title { font-size: 1.4rem; font-weight: 700; color: #111; margin-bottom: 2px; }
+  .page-sub   { font-size: 0.8rem; color: #888; margin-bottom: 1.4rem; }
+
+  /* ── Dataframe ── */
+  [data-testid="stDataFrame"] * { color: #1a1a1a !important; }
+
+  /* ── Hide Streamlit footer ── */
+  footer, #MainMenu { visibility: hidden; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -193,7 +248,7 @@ with st.sidebar:
         st.caption("Upload folder `model/` ke repo GitHub lalu redeploy.")
 
 # ── HEADER ───────────────────────────────────────────────────────────────────
-st.markdown(f'<div class="page-title"> Prediksi Saham Indonesia</div>', unsafe_allow_html=True)
+st.markdown(f'<div class="page-title">📈 Prediksi Saham Indonesia</div>', unsafe_allow_html=True)
 st.markdown(f'<div class="page-sub">{TICKERS[ticker]} · {ticker}</div>', unsafe_allow_html=True)
 
 # ── Fetch data ───────────────────────────────────────────────────────────────
