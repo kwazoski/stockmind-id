@@ -13,7 +13,7 @@ from scipy import stats
 # ── Page Config ───────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="StockMind ID — Prediksi Saham Indonesia",
-    page_icon="📈",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -24,70 +24,78 @@ st.markdown("""
   html, body, [class*="css"], [data-testid="stAppViewContainer"],
   [data-testid="stMain"], .main, .block-container {
     font-family: 'Segoe UI', Tahoma, Geneva, sans-serif !important;
-    font-size: 14px !important;
+    font-size: 16px !important;
     background-color: #ffffff !important;
     color: #1a1a1a !important;
   }
+  /* Paragraf dan teks umum */
+  p, li, span, div { font-size: 15px !important; color: #1a1a1a; }
+
   [data-testid="stSidebar"], [data-testid="stSidebar"] > div {
     background-color: #f5f5f5 !important;
     border-right: 1px solid #e0e0e0 !important;
   }
-  [data-testid="stSidebar"] * { color: #1a1a1a !important; }
-  .stSelectbox > div > div { background: #fff !important; color: #1a1a1a !important; border: 1px solid #ccc !important; }
-  .stDateInput input { background: #fff !important; color: #1a1a1a !important; border: 1px solid #ccc !important; }
-  [data-testid="stTabs"] button { color: #555 !important; }
+  [data-testid="stSidebar"] * { color: #1a1a1a !important; font-size: 14px !important; }
+  /* Radio buttons sidebar lebih besar */
+  [data-testid="stSidebar"] label { font-size: 15px !important; font-weight: 500 !important; }
+
+  .stSelectbox > div > div { background: #fff !important; color: #1a1a1a !important; border: 1px solid #ccc !important; font-size: 15px !important; }
+  .stDateInput input { background: #fff !important; color: #1a1a1a !important; border: 1px solid #ccc !important; font-size: 15px !important; }
+  [data-testid="stTabs"] button { color: #555 !important; font-size: 15px !important; font-weight: 600 !important; }
   [data-testid="stTabs"] button[aria-selected="true"] { color: #1a1a1a !important; border-bottom: 2px solid #1a1a1a !important; }
   hr { border-color: #e0e0e0 !important; }
-  .stCaption, [data-testid="stCaptionContainer"] { color: #777 !important; }
-  [data-testid="stDataFrame"] * { color: #1a1a1a !important; }
+  .stCaption, [data-testid="stCaptionContainer"] { color: #777 !important; font-size: 13px !important; }
+  [data-testid="stDataFrame"] * { color: #1a1a1a !important; font-size: 14px !important; }
   footer, #MainMenu { visibility: hidden; }
 
-  .page-title { font-size: 2.2rem; font-weight: 800; color: #0a0a0a; letter-spacing: -0.02em; margin-bottom: 4px; }
-  .page-sub   { font-size: 0.88rem; color: #777; margin-bottom: 1.8rem; }
+  /* Judul halaman — besar & tebal */
+  .page-title { font-size: 2.4rem; font-weight: 800; color: #0a0a0a; letter-spacing: -0.02em; margin-bottom: 6px; }
+  .page-sub   { font-size: 1rem; color: #666; margin-bottom: 2rem; font-weight: 400; }
 
-  .section-title {
-    font-size: 1.2rem; font-weight: 700; color: #111;
-    margin: 28px 0 6px 0; border-left: 4px solid #111;
-    padding-left: 10px;
-  }
+  /* Section label — lebih gelap & besar */
   .section-label {
-    font-size: 0.75rem; font-weight: 700; color: #555;
+    font-size: 0.85rem; font-weight: 700; color: #333;
     text-transform: uppercase; letter-spacing: 0.12em;
-    border-bottom: 1px solid #e0e0e0; padding-bottom: 7px;
-    margin: 24px 0 14px 0;
+    border-bottom: 2px solid #e0e0e0; padding-bottom: 8px;
+    margin: 28px 0 16px 0;
   }
-  .kpi-box {
-    border: 1px solid #e0e0e0; border-radius: 6px;
-    padding: 16px 20px; background: #fafafa; margin-bottom: 4px;
-  }
-  .kpi-label { font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; font-weight: 500; }
-  .kpi-value { font-size: 1.5rem; font-weight: 700; color: #0a0a0a; }
-  .kpi-value.up   { color: #1a7a3c; }
-  .kpi-value.down { color: #c0392b; }
-  .kpi-value.muted { color: #222; font-size: 1.05rem; font-weight: 600; }
 
+  /* KPI cards */
+  .kpi-box {
+    border: 1px solid #e0e0e0; border-radius: 8px;
+    padding: 18px 22px; background: #fafafa; margin-bottom: 6px;
+  }
+  .kpi-label { font-size: 0.78rem; color: #777; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; font-weight: 600; }
+  .kpi-value { font-size: 1.65rem; font-weight: 700; color: #0a0a0a; }
+  .kpi-value.up    { color: #1a7a3c; }
+  .kpi-value.down  { color: #c0392b; }
+  .kpi-value.muted { color: #111; font-size: 1.2rem; font-weight: 700; }
+
+  /* Info boxes */
   .info-box {
     background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 8px;
     padding: 18px 22px; margin-bottom: 14px;
   }
-  .info-box h4 { font-size: 0.85rem; font-weight: 700; color: #333; margin: 0 0 6px 0; }
-  .info-box p  { font-size: 0.82rem; color: #555; margin: 0; line-height: 1.6; }
+  .info-box h4 { font-size: 0.95rem; font-weight: 700; color: #111; margin: 0 0 6px 0; }
+  .info-box p  { font-size: 0.92rem; color: #444; margin: 0; line-height: 1.7; }
 
+  /* Member cards */
   .member-card {
     border: 1px solid #e0e0e0; border-radius: 8px;
-    padding: 20px; background: #fafafa; text-align: center;
+    padding: 24px; background: #fafafa; text-align: center;
   }
-  .member-name { font-size: 1rem; font-weight: 700; color: #111; margin-bottom: 4px; }
-  .member-role { font-size: 0.78rem; color: #888; }
+  .member-name { font-size: 1.1rem; font-weight: 700; color: #111; margin-bottom: 6px; }
+  .member-role { font-size: 0.88rem; color: #666; }
 
+  /* Method cards */
   .method-card {
     border: 1px solid #e0e0e0; border-radius: 8px;
-    padding: 16px 18px; background: #fafafa; margin-bottom: 10px;
+    padding: 18px 20px; background: #fafafa; margin-bottom: 12px;
   }
-  .method-title { font-size: 0.9rem; font-weight: 700; color: #111; margin-bottom: 4px; }
-  .method-desc  { font-size: 0.8rem; color: #555; line-height: 1.5; }
+  .method-title { font-size: 1rem; font-weight: 700; color: #111; margin-bottom: 5px; }
+  .method-desc  { font-size: 0.9rem; color: #444; line-height: 1.6; }
 
-  .nav-item { font-size: 0.82rem; font-weight: 600; color: #333; }
+  .nav-item { font-size: 0.9rem; font-weight: 600; color: #333; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -105,9 +113,8 @@ ANOMALY_FEATURES = ['Close','Volume','Daily_Return','Volatility','High_Low_Gap']
 MODEL_DIR = "model"
 
 TEAM_MEMBERS = [
-    {"name": "Anggota 1", "role": "Data Engineer"},
-    {"name": "Anggota 2", "role": "ML Engineer"},
-    {"name": "Anggota 3", "role": "Data Analyst"},
+    {"name": "Yuwanda Aji Pangestu", "role": "ML Engineer"},
+    {"name": "Rafinara ARdhani Abhinaya", "role": "Data Engineer"},
 ]
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -201,9 +208,9 @@ with st.sidebar:
         has_model = model_ok(ticker)
         st.divider()
         if has_model:
-            st.success("✅ Model tersedia")
+            st.success(" Model tersedia")
         else:
-            st.warning("⚠️ Model belum diupload")
+            st.warning(" Model belum diupload")
             st.caption("Letakkan folder `model/` di root project.")
     else:
         ticker = 'BBCA.JK'
@@ -217,7 +224,7 @@ with st.sidebar:
 # PAGE 1 — HOME
 # ══════════════════════════════════════════════════════════════════════════════
 if page == "Home":
-    st.markdown('<div class="page-title">📈 StockMind Indonesia</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-title"> StockMind Indonesia</div>', unsafe_allow_html=True)
     st.markdown('<div class="page-sub">Sistem Prediksi Harga & Deteksi Anomali Saham IDX berbasis Machine Learning</div>', unsafe_allow_html=True)
 
     st.markdown('<div class="section-label">Tentang Proyek</div>', unsafe_allow_html=True)
@@ -231,10 +238,10 @@ if page == "Home":
     st.markdown('<div class="section-label">Fitur Utama</div>', unsafe_allow_html=True)
     f1, f2, f3, f4 = st.columns(4)
     fitur = [
-        ("🔮", "Prediksi Harga", "Prediksi harga penutupan menggunakan Linear Regression, Random Forest, XGBoost, dan SVR."),
-        ("🔍", "Deteksi Anomali", "Identifikasi pergerakan harga tidak wajar dengan Z-Score, Isolation Forest, dan LOF."),
-        ("📊", "Visualisasi", "Grafik interaktif prediksi vs aktual, anomali, dan perbandingan performa model."),
-        ("📂", "5 Saham IDX", "Mencakup BBCA, BBRI, TLKM, GOTO, dan ASII dengan data dari 2020 hingga sekarang."),
+        ("", "Prediksi Harga", "Prediksi harga penutupan menggunakan Linear Regression, Random Forest, XGBoost, dan SVR."),
+        ("", "Deteksi Anomali", "Identifikasi pergerakan harga tidak wajar dengan Z-Score, Isolation Forest, dan LOF."),
+        ("", "Visualisasi", "Grafik interaktif prediksi vs aktual, anomali, dan perbandingan performa model."),
+        ("", "5 Saham IDX", "Mencakup BBCA, BBRI, TLKM, GOTO, dan ASII dengan data dari 2020 hingga sekarang."),
     ]
     for col, (icon, title, desc) in zip([f1, f2, f3, f4], fitur):
         with col:
@@ -264,7 +271,7 @@ if page == "Home":
     for col, m in zip(cols, TEAM_MEMBERS):
         with col:
             st.markdown(f"""<div class="member-card">
-                <div style="font-size:2rem">👤</div>
+                <div style="font-size:2rem"></div>
                 <div class="member-name">{m['name']}</div>
                 <div class="member-role">{m['role']}</div>
             </div>""", unsafe_allow_html=True)
@@ -285,7 +292,7 @@ if page == "Home":
 # PAGE 2 — DATASET OVERVIEW
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == "Dataset Overview":
-    st.markdown('<div class="page-title">📂 Dataset Overview</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-title"> Dataset Overview</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="page-sub">{TICKERS[ticker]} · {ticker}</div>', unsafe_allow_html=True)
 
     with st.spinner("Mengambil data..."):
@@ -355,7 +362,7 @@ elif page == "Dataset Overview":
 # PAGE 3 — PREDICTION & ANALYSIS
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == "Prediction & Analysis":
-    st.markdown('<div class="page-title">🔮 Prediction & Analysis</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-title"> Prediction & Analysis</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="page-sub">{TICKERS[ticker]} · {ticker}</div>', unsafe_allow_html=True)
 
     with st.spinner("Mengambil data..."):
@@ -410,7 +417,7 @@ elif page == "Prediction & Analysis":
         </div>""", unsafe_allow_html=True)
 
     if not has_model:
-        st.info("⬆️ Upload model .pkl untuk melihat hasil prediksi ML. Saat ini dalam mode demo.")
+        st.info(" Upload model .pkl untuk melihat hasil prediksi ML. Saat ini dalam mode demo.")
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=df['Date'], y=df['Close'], name='Close', line=dict(color='#1a1a1a', width=1.5)))
         fig.add_trace(go.Scatter(x=df['Date'], y=df['MA7'], name='MA7', line=dict(color='#e67e22', width=1, dash='dot')))
@@ -485,7 +492,7 @@ elif page == "Prediction & Analysis":
 # PAGE 4 — VISUALIZATION
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == "Visualization":
-    st.markdown('<div class="page-title">📊 Visualization</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-title"> Visualization</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="page-sub">{TICKERS[ticker]} · {ticker}</div>', unsafe_allow_html=True)
 
     with st.spinner("Mengambil data..."):
@@ -553,7 +560,7 @@ elif page == "Visualization":
 # PAGE 5 — ABOUT
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == "About":
-    st.markdown('<div class="page-title">ℹ️ About</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-title">ℹ About</div>', unsafe_allow_html=True)
     st.markdown('<div class="page-sub">Informasi proyek, metode, dan dataset</div>', unsafe_allow_html=True)
 
     st.markdown('<div class="section-label">Penjelasan Metode</div>', unsafe_allow_html=True)
