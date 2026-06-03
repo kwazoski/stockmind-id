@@ -204,9 +204,9 @@ with st.sidebar:
         has_model = model_ok(ticker)
         st.divider()
         if has_model:
-            st.success("✅ Model tersedia")
+            st.success(" Model tersedia")
         else:
-            st.warning("⚠️ Model belum diupload")
+            st.warning(" Model belum diupload")
             st.caption("Letakkan folder `model/` di root project.")
     else:
         ticker = 'BBCA.JK'
@@ -219,7 +219,7 @@ with st.sidebar:
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE 1 — HOME
 # ══════════════════════════════════════════════════════════════════════════════
-if page == "🏠 Home":
+if page == " Home":
     st.markdown('<div class="page-title"> StockMind Indonesia</div>', unsafe_allow_html=True)
     st.markdown('<div class="page-sub">Sistem Prediksi Harga & Deteksi Anomali Saham IDX berbasis Machine Learning</div>', unsafe_allow_html=True)
 
