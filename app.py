@@ -12,7 +12,7 @@ from scipy import stats
 # ── Page Config ──────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="Prediksi Saham Indonesia",
-    page_icon="📈",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded",
 )
