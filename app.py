@@ -13,7 +13,7 @@ from scipy import stats
 # ── Page Config ───────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="StockMind ID — Prediksi Saham Indonesia",
-    page_icon="",
+    page_icon="📈",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -105,8 +105,9 @@ ANOMALY_FEATURES = ['Close','Volume','Daily_Return','Volatility','High_Low_Gap']
 MODEL_DIR = "model"
 
 TEAM_MEMBERS = [
-    {"name": "Yuwanda Aji Pangestu", "role": "ML Engineer"},
-    {"name": "Rafinara Ardhani Abhinaya", "role": "Data Engineer"},
+    {"name": "Anggota 1", "role": "Data Engineer"},
+    {"name": "Anggota 2", "role": "ML Engineer"},
+    {"name": "Anggota 3", "role": "Data Analyst"},
 ]
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -180,14 +181,11 @@ with st.sidebar:
     st.caption("Prediksi Saham Indonesia")
     st.divider()
 
-    page = st.radio(
-        "Navigasi",
-        [" Home", " Dataset Overview", " Prediction & Analysis", " Visualization", "ℹ About"],
-        label_visibility="collapsed"
-    )
+    PAGES = ["Home", "Dataset Overview", "Prediction & Analysis", "Visualization", "About"]
+    page = st.radio("Navigasi", PAGES, label_visibility="collapsed")
     st.divider()
 
-    if page in [" Dataset Overview", " Prediction & Analysis", " Visualization"]:
+    if page in ["Dataset Overview", "Prediction & Analysis", "Visualization"]:
         st.markdown("**Pengaturan**")
         ticker = st.selectbox("Saham", list(TICKERS.keys()),
                               format_func=lambda x: f"{TICKERS[x]} ({x})")
@@ -197,15 +195,15 @@ with st.sidebar:
         with col_b:
             end_date = st.date_input("Sampai", value=datetime.today(), label_visibility="collapsed")
 
-        if page == "🔮 Prediction & Analysis":
+        if page == "Prediction & Analysis":
             forecast_days = st.slider("Forecast (hari)", 1, 30, 7)
 
         has_model = model_ok(ticker)
         st.divider()
         if has_model:
-            st.success(" Model tersedia")
+            st.success("✅ Model tersedia")
         else:
-            st.warning(" Model belum diupload")
+            st.warning("⚠️ Model belum diupload")
             st.caption("Letakkan folder `model/` di root project.")
     else:
         ticker = 'BBCA.JK'
@@ -218,8 +216,8 @@ with st.sidebar:
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE 1 — HOME
 # ══════════════════════════════════════════════════════════════════════════════
-if page == " Home":
-    st.markdown('<div class="page-title"> StockMind Indonesia</div>', unsafe_allow_html=True)
+if page == "Home":
+    st.markdown('<div class="page-title">📈 StockMind Indonesia</div>', unsafe_allow_html=True)
     st.markdown('<div class="page-sub">Sistem Prediksi Harga & Deteksi Anomali Saham IDX berbasis Machine Learning</div>', unsafe_allow_html=True)
 
     st.markdown('<div class="section-label">Tentang Proyek</div>', unsafe_allow_html=True)
@@ -233,10 +231,10 @@ if page == " Home":
     st.markdown('<div class="section-label">Fitur Utama</div>', unsafe_allow_html=True)
     f1, f2, f3, f4 = st.columns(4)
     fitur = [
-        ("", "Prediksi Harga", "Prediksi harga penutupan menggunakan Linear Regression, Random Forest, XGBoost, dan SVR."),
-        ("", "Deteksi Anomali", "Identifikasi pergerakan harga tidak wajar dengan Z-Score, Isolation Forest, dan LOF."),
-        ("", "Visualisasi", "Grafik interaktif prediksi vs aktual, anomali, dan perbandingan performa model."),
-        ("", "5 Saham IDX", "Mencakup BBCA, BBRI, TLKM, GOTO, dan ASII dengan data dari 2020 hingga sekarang."),
+        ("🔮", "Prediksi Harga", "Prediksi harga penutupan menggunakan Linear Regression, Random Forest, XGBoost, dan SVR."),
+        ("🔍", "Deteksi Anomali", "Identifikasi pergerakan harga tidak wajar dengan Z-Score, Isolation Forest, dan LOF."),
+        ("📊", "Visualisasi", "Grafik interaktif prediksi vs aktual, anomali, dan perbandingan performa model."),
+        ("📂", "5 Saham IDX", "Mencakup BBCA, BBRI, TLKM, GOTO, dan ASII dengan data dari 2020 hingga sekarang."),
     ]
     for col, (icon, title, desc) in zip([f1, f2, f3, f4], fitur):
         with col:
@@ -286,8 +284,8 @@ if page == " Home":
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE 2 — DATASET OVERVIEW
 # ══════════════════════════════════════════════════════════════════════════════
-elif page == " Dataset Overview":
-    st.markdown('<div class="page-title"> Dataset Overview</div>', unsafe_allow_html=True)
+elif page == "Dataset Overview":
+    st.markdown('<div class="page-title">📂 Dataset Overview</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="page-sub">{TICKERS[ticker]} · {ticker}</div>', unsafe_allow_html=True)
 
     with st.spinner("Mengambil data..."):
@@ -357,7 +355,7 @@ elif page == " Dataset Overview":
 # PAGE 3 — PREDICTION & ANALYSIS
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == "Prediction & Analysis":
-    st.markdown('<div class="page-title"> Prediction & Analysis</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-title">🔮 Prediction & Analysis</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="page-sub">{TICKERS[ticker]} · {ticker}</div>', unsafe_allow_html=True)
 
     with st.spinner("Mengambil data..."):
@@ -412,7 +410,7 @@ elif page == "Prediction & Analysis":
         </div>""", unsafe_allow_html=True)
 
     if not has_model:
-        st.info("⬆ Upload model .pkl untuk melihat hasil prediksi ML. Saat ini dalam mode demo.")
+        st.info("⬆️ Upload model .pkl untuk melihat hasil prediksi ML. Saat ini dalam mode demo.")
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=df['Date'], y=df['Close'], name='Close', line=dict(color='#1a1a1a', width=1.5)))
         fig.add_trace(go.Scatter(x=df['Date'], y=df['MA7'], name='MA7', line=dict(color='#e67e22', width=1, dash='dot')))
@@ -486,8 +484,8 @@ elif page == "Prediction & Analysis":
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE 4 — VISUALIZATION
 # ══════════════════════════════════════════════════════════════════════════════
-elif page == " Visualization":
-    st.markdown('<div class="page-title"> Visualization</div>', unsafe_allow_html=True)
+elif page == "Visualization":
+    st.markdown('<div class="page-title">📊 Visualization</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="page-sub">{TICKERS[ticker]} · {ticker}</div>', unsafe_allow_html=True)
 
     with st.spinner("Mengambil data..."):
@@ -554,8 +552,8 @@ elif page == " Visualization":
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE 5 — ABOUT
 # ══════════════════════════════════════════════════════════════════════════════
-elif page == "ℹ About":
-    st.markdown('<div class="page-title">ℹ About</div>', unsafe_allow_html=True)
+elif page == "About":
+    st.markdown('<div class="page-title">ℹ️ About</div>', unsafe_allow_html=True)
     st.markdown('<div class="page-sub">Informasi proyek, metode, dan dataset</div>', unsafe_allow_html=True)
 
     st.markdown('<div class="section-label">Penjelasan Metode</div>', unsafe_allow_html=True)
