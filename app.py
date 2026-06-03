@@ -193,7 +193,7 @@ with st.sidebar:
         st.caption("Upload folder `model/` ke repo GitHub lalu redeploy.")
 
 # ── HEADER ───────────────────────────────────────────────────────────────────
-st.markdown(f'<div class="page-title">📈 Prediksi Saham Indonesia</div>', unsafe_allow_html=True)
+st.markdown(f'<div class="page-title"> Prediksi Saham Indonesia</div>', unsafe_allow_html=True)
 st.markdown(f'<div class="page-sub">{TICKERS[ticker]} · {ticker}</div>', unsafe_allow_html=True)
 
 # ── Fetch data ───────────────────────────────────────────────────────────────
