@@ -356,8 +356,8 @@ elif page == " Dataset Overview":
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE 3 — PREDICTION & ANALYSIS
 # ══════════════════════════════════════════════════════════════════════════════
-elif page == "🔮 Prediction & Analysis":
-    st.markdown('<div class="page-title">🔮 Prediction & Analysis</div>', unsafe_allow_html=True)
+elif page == "Prediction & Analysis":
+    st.markdown('<div class="page-title"> Prediction & Analysis</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="page-sub">{TICKERS[ticker]} · {ticker}</div>', unsafe_allow_html=True)
 
     with st.spinner("Mengambil data..."):
