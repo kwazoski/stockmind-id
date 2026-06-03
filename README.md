@@ -24,7 +24,7 @@ stockmind/
     └── ASII_JK/ ...
 ```
 
-##  Deploy ke Streamlit Cloud (Gratis)
+##  Deploy ke Streamlit Cloud
 
 ### Step 1 — Siapkan model dari Colab
 1. Download `models_saham_indonesia.zip` dari Colab
