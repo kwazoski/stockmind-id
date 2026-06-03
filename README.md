@@ -1,4 +1,4 @@
-# 📈 StockMind ID — Prediksi Saham Indonesia
+#  StockMind ID — Prediksi Saham Indonesia
 
 Dashboard ML untuk prediksi harga & deteksi anomali 5 saham IDX.
 
@@ -24,7 +24,7 @@ stockmind/
     └── ASII_JK/ ...
 ```
 
-## 🚀 Deploy ke Streamlit Cloud (Gratis)
+##  Deploy ke Streamlit Cloud (Gratis)
 
 ### Step 1 — Siapkan model dari Colab
 1. Download `models_saham_indonesia.zip` dari Colab
@@ -40,7 +40,7 @@ git remote add origin https://github.com/USERNAME/stockmind-id.git
 git push -u origin main
 ```
 
-> ⚠️ Folder `model/` berisi file .pkl besar.  
+>  Folder `model/` berisi file .pkl besar.  
 > Kalau > 100MB, gunakan [Git LFS](https://git-lfs.github.com/):
 > ```bash
 > git lfs install
@@ -55,19 +55,19 @@ git push -u origin main
 4. Pilih repo → branch `main` → file `app.py`
 5. Klik **Deploy!**
 
-### Step 4 — Selesai! 🎉
+### Step 4 — Selesai! 
 URL kamu: `https://USERNAME-stockmind-id.streamlit.app`
 
 ---
 
-## ⚡ Jalankan Lokal
+##  Jalankan Lokal
 
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## 📌 Catatan
+##  Catatan
 - Data harga realtime diambil dari Yahoo Finance
 - Model .pkl **harus** diupload agar fitur prediksi ML aktif
 - Tanpa model, app berjalan dalam **mode demo** (hanya tampilkan MA & harga aktual)
