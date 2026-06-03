@@ -1,0 +1,72 @@
+{
+  "tickers": {
+    "BBCA.JK": {
+      "company": "Bank BCA",
+      "best_pred_model": "Linear Regression",
+      "r2": 0.9669,
+      "mape": 1.34,
+      "mae": 100.97,
+      "n_anomaly": 59,
+      "folder": "BBCA_JK"
+    },
+    "BBRI.JK": {
+      "company": "Bank BRI",
+      "best_pred_model": "Linear Regression",
+      "r2": 0.8789,
+      "mape": 1.57,
+      "mae": 53.38,
+      "n_anomaly": 64,
+      "folder": "BBRI_JK"
+    },
+    "TLKM.JK": {
+      "company": "Telkom Indonesia",
+      "best_pred_model": "Linear Regression",
+      "r2": 0.9717,
+      "mape": 1.77,
+      "mae": 53.57,
+      "n_anomaly": 69,
+      "folder": "TLKM_JK"
+    },
+    "GOTO.JK": {
+      "company": "GoTo Group",
+      "best_pred_model": "Linear Regression",
+      "r2": 0.9147,
+      "mape": 1.96,
+      "mae": 1.17,
+      "n_anomaly": 49,
+      "folder": "GOTO_JK"
+    },
+    "ASII.JK": {
+      "company": "Astra International",
+      "best_pred_model": "Linear Regression",
+      "r2": 0.9758,
+      "mape": 1.66,
+      "mae": 90.26,
+      "n_anomaly": 59,
+      "folder": "ASII_JK"
+    }
+  },
+  "prediction_features": [
+    "Open",
+    "High",
+    "Low",
+    "Close",
+    "Volume",
+    "MA7",
+    "MA30",
+    "Daily_Return",
+    "Volatility",
+    "Volume_Change",
+    "High_Low_Gap",
+    "Open_Close_Gap"
+  ],
+  "anomaly_features": [
+    "Close",
+    "Volume",
+    "Daily_Return",
+    "Volatility",
+    "High_Low_Gap"
+  ],
+  "start_date": "2020-01-01",
+  "end_date": "2026-06-02"
+}
