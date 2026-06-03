@@ -12,7 +12,7 @@ from scipy import stats
 # ── Page Config ──────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="Prediksi Saham Indonesia",
-    page_icon="📈",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -90,32 +90,33 @@ st.markdown("""
   .kpi-box {
     border: 1px solid #e0e0e0;
     border-radius: 6px;
-    padding: 14px 18px;
+    padding: 16px 20px;
     background: #fafafa;
     margin-bottom: 4px;
   }
   .kpi-label {
-    font-size: 0.68rem;
-    color: #888;
+    font-size: 0.72rem;
+    color: #777;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 4px;
+    letter-spacing: 0.07em;
+    margin-bottom: 6px;
+    font-weight: 500;
   }
-  .kpi-value { font-size: 1.3rem; font-weight: 700; color: #111; }
+  .kpi-value { font-size: 1.5rem; font-weight: 700; color: #0a0a0a; }
   .kpi-value.up    { color: #1a7a3c; }
   .kpi-value.down  { color: #c0392b; }
-  .kpi-value.muted { color: #444; font-size: 1rem; font-weight: 600; }
+  .kpi-value.muted { color: #222; font-size: 1.1rem; font-weight: 600; }
 
   /* ── Section labels ── */
   .section-label {
-    font-size: 0.68rem;
-    font-weight: 600;
-    color: #999;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #444;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    border-bottom: 1px solid #ebebeb;
-    padding-bottom: 6px;
-    margin: 22px 0 12px 0;
+    letter-spacing: 0.12em;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 8px;
+    margin: 24px 0 14px 0;
   }
 
   /* ── Info / warn notes ── */
@@ -130,8 +131,8 @@ st.markdown("""
   }
 
   /* ── Page title ── */
-  .page-title { font-size: 1.4rem; font-weight: 700; color: #111; margin-bottom: 2px; }
-  .page-sub   { font-size: 0.8rem; color: #888; margin-bottom: 1.4rem; }
+  .page-title { font-size: 2rem; font-weight: 800; color: #0a0a0a; margin-bottom: 4px; letter-spacing: -0.02em; }
+  .page-sub   { font-size: 0.85rem; color: #777; margin-bottom: 1.6rem; }
 
   /* ── Dataframe ── */
   [data-testid="stDataFrame"] * { color: #1a1a1a !important; }
@@ -242,13 +243,13 @@ with st.sidebar:
 
     has_model = model_ok(ticker)
     if has_model:
-        st.success("Model tersedia", icon="✅")
+        st.success("Model tersedia", icon="")
     else:
-        st.warning("Model belum diupload", icon="⚠️")
+        st.warning("Model belum diupload", icon="")
         st.caption("Upload folder `model/` ke repo GitHub lalu redeploy.")
 
 # ── HEADER ───────────────────────────────────────────────────────────────────
-st.markdown(f'<div class="page-title">📈 Prediksi Saham Indonesia</div>', unsafe_allow_html=True)
+st.markdown(f'<div class="page-title">Prediksi Saham Indonesia</div>', unsafe_allow_html=True)
 st.markdown(f'<div class="page-sub">{TICKERS[ticker]} · {ticker}</div>', unsafe_allow_html=True)
 
 # ── Fetch data ───────────────────────────────────────────────────────────────
