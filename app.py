@@ -49,7 +49,7 @@ st.markdown("""
   footer, #MainMenu { visibility: hidden; }
 
   /* Judul halaman — besar & tebal */
-  .page-title { font-size: 4rem; font-weight: 800; color: #0a0a0a; letter-spacing: -0.02em; margin-bottom: 6px; }
+  .page-title { font-size: 10rem; font-weight: 800; color: #0a0a0a; letter-spacing: -0.02em; margin-bottom: 6px; }
   .page-sub   { font-size: 1rem; color: #666; margin-bottom: 2rem; font-weight: 400; }
 
   /* Section label — lebih gelap & besar */
