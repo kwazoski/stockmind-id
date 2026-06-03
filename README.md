@@ -36,7 +36,7 @@ stockmind/
 git init
 git add .
 git commit -m "initial deploy"
-git remote add origin https://github.com/USERNAME/stockmind-id.git
+git remote add origin https://github.com/kwazoski/stockmind-id.git
 git push -u origin main
 ```
 
